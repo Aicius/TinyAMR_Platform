@@ -1,0 +1,15 @@
+﻿Part,Manufacturer,Part Number,Quantity,Price ($),Footprint (mm²),Description
+Coutx,Taiyo Yuden,GMK212B7105KG-T,1,0.03,6.75,Cap: 1 µF  Total Derated Cap: 560 nF  VDC: 35 V  ESR: 1 mΩ  Package: 0805  
+L1,Coilcraft,XAL5030-222MEB,1,0.63,54.45,L: 2.2 µH  DCR: 13.2 mΩ  IDC: 9.2 A  
+Cout,TDK,CGA6P3X7S1H106K250AB,2,0.33,14.7,Cap: 10 µF  Total Derated Cap: 13 µF  VDC: 50 V  ESR: 2.83 mΩ  Package: 1210_280  
+Ccomp,TDK,CGA4J2C0G1H223J125AA,1,0.08,6.75,Cap: 22 nF  Total Derated Cap: 22 nF  VDC: 50 V  ESR: 0 Ω  Package: 0805  
+Rfbb,Yageo,RC0201FR-0710KL,1,0.01,2.08,Resistance: 10 kΩ  Tolerance: 1.0%  Power: 50 mW  
+Cinx,MuRata,GRM155R71C104KA88D,1,0.01,3,Cap: 100 nF  Total Derated Cap: 100 nF  VDC: 16 V  ESR: 1 mΩ  Package: 0402  
+Css,MuRata,GRM033C80G223KE01D,1,0.01,2.08,Cap: 22 nF  Total Derated Cap: 22 nF  VDC: 4 V  ESR: 1 mΩ  Package: 0201  
+Rfbt,Vishay-Dale,CRCW0402127KFKED,1,0.01,3,Resistance: 127 kΩ  Tolerance: 1.0%  Power: 63 mW  
+Ccomp2,MuRata,GRM1555C1H511GA01D,1,0.03,3,Cap: 510 pF  Total Derated Cap: 510 pF  VDC: 50 V  ESR: 0 Ω  Package: 0402  
+Cin,MuRata,GRM31CR61C106KA88L,1,0.08,10.92,Cap: 10 µF  Total Derated Cap: 9 µF  VDC: 16 V  ESR: 3.62 mΩ  Package: 1206  
+Rt,Vishay-Dale,CRCW040238K3FKED,1,0.01,3,Resistance: 38.3 kΩ  Tolerance: 1.0%  Power: 63 mW  
+Rcomp,Vishay-Dale,CRCW04022K94FKED,1,0.01,3,Resistance: 2.94 kΩ  Tolerance: 1.0%  Power: 63 mW  
+D1,Diodes Inc.,PDS760-13,1,0.63,49.56,Type: Schottky  VRRM: 60 V  Io: 7 A  
+U1,Texas Instruments,TPS55330RTER,1,1.3,16,
