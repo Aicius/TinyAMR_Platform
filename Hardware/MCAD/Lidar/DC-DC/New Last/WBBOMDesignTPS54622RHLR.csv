@@ -1,0 +1,16 @@
+﻿,Part,Manufacturer,Part Number,Quantity,Price ($),Footprint (mm²),Description
+805,Cboot,Kemet,C0805C104Z5VACTU,1,0.01,4.68,Cap: 100 nF  Total Derated Cap: 100 nF  VDC: 25 V  ESR: 1 mΩ  Package: 0603  
+,Ccomp,Kemet,C0603C622J5GAC7867,1,0.12,4.68,Cap: 6.2 nF  Total Derated Cap: 6.2 nF  VDC: 5 V  ESR: 0 Ω  Package: 0603  
+,Cin,Panasonic,25SVPF27MX,1,0.36,53.29,Cap: 27 µF  Total Derated Cap: 27 µF  VDC: 25 V  ESR: 40 mΩ  Package: 5x5.9  
+,Cinx,TDK,C1608X5R1V475K080AC,1,0.1,4.68,Cap: 4.7 µF  Total Derated Cap: 4.7 µF  VDC: 35 V  ESR: 3.73 mΩ  Package: 0603  
+,Cout,MuRata,GRM32ER61C476KE15L,2,0.38,14.7,Cap: 47 µF  Total Derated Cap: 27 µF  VDC: 16 V  ESR: 3.04 mΩ  Package: 1210  
+,Css,Kemet,C0402C222J3GACTU,1,0.1,3,Cap: 2.2 nF  Total Derated Cap: 2.2 nF  VDC: 25 V  ESR: 0 Ω  Package: 0402  
+,L1,Coilcraft,XAL4030-332MEB,1,0.72,25,L: 3.3 µH  DCR: 26 mΩ  IDC: 5.5 A  
+,Rcomp,Yageo,RC0201FR-0710KL,1,0.01,2.08,Resistance: 10 kΩ  Tolerance: 1.0%  Power: 50 mW  
+,Renb,Vishay-Dale,CRCW040237K4FKED,1,0.01,3,Resistance: 37.4 kΩ  Tolerance: 1.0%  Power: 63 mW  
+,Rent,Yageo,RC0201FR-07105KL,1,0.01,2.08,Resistance: 105 kΩ  Tolerance: 1.0%  Power: 50 mW  
+,Rfbb,Yageo,RC0201FR-0710KL,1,0.01,2.08,Resistance: 10 kΩ  Tolerance: 1.0%  Power: 50 mW  
+,Rfbt,Vishay-Dale,CRCW0402191KFKED,1,0.01,3,Resistance: 191 kΩ  Tolerance: 1.0%  Power: 63 mW  
+,Rt,Yageo,RC0201FR-0728K7L,1,0.01,2.08,Resistance: 28.7 kΩ  Tolerance: 1.0%  Power: 50 mW  
+,U1,Texas Instruments,TPS54622RHLR,1,1.95,21.62,
+,Ccomp2,TDK,C0402C0G1C120K020BC,1,0.04,1.68,Cap: 12 pF  Total Derated Cap: 12 pF  VDC: 16 V  ESR: 0 Ω  Package: 01005  

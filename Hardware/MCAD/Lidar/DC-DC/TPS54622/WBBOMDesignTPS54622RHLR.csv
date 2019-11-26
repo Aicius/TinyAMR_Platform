@@ -1,0 +1,18 @@
+﻿Part,,Part Number,Quantity,Price ($),Footprint (mm²),Description
+Cboot,Y,C0805C104Z5VACTU,1,0.01,4.68,Cap: 100 nF  Total Derated Cap: 100 nF  VDC: 25 V  ESR: 1 mΩ  Package: 0603  
+Ccomp,Y,GRM2195C1H622JA01D,1,0.12,4.68,Cap: 6.2 nF  Total Derated Cap: 6.2 nF  VDC: 5 V  ESR: 0 Ω  Package: 0603  
+Cinx,Y,CC0805ZRY5V6BB475,1,0.1,4.68,Cap: 4.7 µF  Total Derated Cap: 4.7 µF  VDC: 35 V  ESR: 3.73 mΩ  Package: 0603  
+Cout,Y,GRM21BR60J476ME15K,2,0.38,14.7,Cap: 47 µF  Total Derated Cap: 27 µF  VDC: 16 V  ESR: 3.04 mΩ  Package: 1210  
+Css,Y,C0805C222K5RACTU,1,0.1,3,Cap: 2.2 nF  Total Derated Cap: 2.2 nF  VDC: 25 V  ESR: 0 Ω  Package: 0402  
+,,,,,,
+,,,,,,
+Rcomp,Y,LTR10EZPJ103,1,0.01,2.08,Resistance: 10 kΩ  Tolerance: 1.0%  Power: 50 mW  
+Renb,Y,ERA-6AEB3742V,1,0.01,3,Resistance: 37.4 kΩ  Tolerance: 1.0%  Power: 63 mW  
+Rent,Y,ERA-6AEB1053V,1,0.01,2.08,Resistance: 105 kΩ  Tolerance: 1.0%  Power: 50 mW  
+Rfbb,Y,LTR10EZPJ103,1,0.01,2.08,Resistance: 10 kΩ  Tolerance: 1.0%  Power: 50 mW  
+Rfbt,Y,ERA-6AEB1913V,1,0.01,3,Resistance: 191 kΩ  Tolerance: 1.0%  Power: 63 mW  
+Rt,Y,RG2012P-2872-B-T5,1,0.01,2.08,Resistance: 28.7 kΩ  Tolerance: 1.0%  Power: 50 mW  
+Ccomp2,Y,CC0805JRNPO9BN120,1,0.04,1.68,Cap: 12 pF  Total Derated Cap: 12 pF  VDC: 16 V  ESR: 0 Ω  Package: 01005  
+U1,,TPS54622RHLR,1,1.95,21.62,
+Cin,,25SVPF27MX,1,0.36,53.29,Cap: 27 µF  Total Derated Cap: 27 µF  VDC: 25 V  ESR: 40 mΩ  Package: 5x5.9  
+L1,Y,BRC2012T3R3MD,1,0.72,25,L: 3.3 µH  DCR: 26 mΩ  IDC: 5.5 A  

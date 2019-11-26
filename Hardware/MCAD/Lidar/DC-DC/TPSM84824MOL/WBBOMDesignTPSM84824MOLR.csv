@@ -1,0 +1,9 @@
+﻿,Part,Manufacturer,Part Number,Quantity,Price ($),Footprint (mm²),Description
+805,Rt,Vishay-Dale,ERA-6AEB4022V,1,0.01,3,Resistance: 40.2 kΩ  Tolerance: 1.0%  Power: 63 mW  
+,Rfbb,Vishay-Dale,CRCW04021K37FKED,1,0.01,3,Resistance: 1.37 kΩ  Tolerance: 1.0%  Power: 63 mW  
+805,Rfbt,Yageo,RC0805FR-0710KL,1,0.01,2.08,Resistance: 10 kΩ  Tolerance: 1.0%  Power: 50 mW  
+805,Cin,TDK,C0805C106K8PACTU,1,0.46,14.7,Cap: 10 µF  Total Derated Cap: 7.4 µF  VDC: 50 V  ESR: 1 mΩ  Package: 1210  
+805,Cin1,TDK,C0805C106K9PACTU,1,0.46,14.7,Cap: 10 µF  Total Derated Cap: 7.4 µF  VDC: 50 V  ESR: 1 mΩ  Package: 1210  
+805,Cout,MuRata,GRM21BR60J476ME15K,1,0.38,14.7,Cap: 47 µF  Total Derated Cap: 32 µF  VDC: 16 V  ESR: 3.04 mΩ  Package: 1210  
+805,Rtt,Vishay-Dale,ERA-6AEB4421V,1,0.01,3,Resistance: 4.42 kΩ  Tolerance: 1.0%  Power: 63 mW  
+,U1,Texas Instruments,TPSM84824MOLR,1,5.95,90.25,

@@ -1,0 +1,9 @@
+Added Net: Name=GND
+Added Net: Name=NetR1_1
+Added Net: Name=NetR2_2
+Added Net: Name=NetR3_2
+Added Net: Name=NetU1_16
+Added Net: Name=Vin
+Added Net: Name=Vout
+Added Class: Name=TPSM84824MOL
+Added Room: Name=TPSM84824MOL

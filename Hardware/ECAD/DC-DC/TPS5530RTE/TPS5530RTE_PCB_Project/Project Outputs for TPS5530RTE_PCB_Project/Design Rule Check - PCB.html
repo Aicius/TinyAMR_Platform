@@ -1,0 +1,586 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD17\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">11/26/2019</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">3:25:49 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc" class="file"><acronym title="C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc">C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">78</td></tr>
+</table>
+</td>
+</table><a name="IDMFXNHQA42YRHD32T5CBZC5RSEGTIAGX4A5YSEFHPZX4PGGYG3SLG"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4KB4XLCQN3KYKZUSCZT5OA0OFNQJTSRGI25XQTDL2JNMAEJYSMGC">Clearance Constraint (Gap=10mil) (All),(All)</a></td>
+<td class="column2">41</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDHLJ0OWX0OCV5P1DOTGOCWJF4UFWSQFJ0XYG0XJOV5DJFNZ4GY0MG">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDX2HYNPLRYLWGK44UCRZTATA4VGFBH4J4VA2ZVXOA2IYPG002WAGM">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">7</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID42PSBEEGZBRSDNSUW3PURQZANOHQQM0XTWVHJYJIPH5GIPTWNDNI">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJS3VNZTPPDHIJON3IZHPU2NOMEACFGTEPRLLMPI3D3ZAVOQA1F2N">Width Constraint (Min=10mil) (Max=10mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDGZ00CPKZRQU35O00TYC1OVVRDIBXUHE05XTS0PUELLAJXHW12IM">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDO0SS2GWXOA0ILTZVEAD1M2VJSPWOTBEHET1NJVCJR1YJJNKOHTVH">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXRGNDIEGPPK2ENN1O3YSWUVDEO4MOFICHRCQMYG1OHZSO4QJFBJ">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNBTFVTJINHHQBPV2KHE2U1UWFPMYPO4CPK05HSGVFJCXDFBPBNTP">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">17</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKHDI331VD2HPLSEQTGCDU2VRWIZ3UHRPTXUSGCLFNUGNFSREUYAE">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</a></td>
+<td class="column2">7</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1CM5RDAQ5DYJIKCYQLPHNKPVFBS0TKC0BQFFXLJTJGZL5FNSNIKL">Silk to Silk (Clearance=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDF00XFLSZDTCYOSRJU4YTQMBMWX0GHQD20LINKLENHT545IKDLI">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZZUK0GX1CFZIF1ARX5AU1AQBXDIFXDUELQKGCCEZ5FDNFJL0Q3QD">Room TPS5530RTE_Schematic (Bounding Region = (2797.166mil, 2410mil, 6212.166mil, 3010mil) (InComponentClass('TPS5530RTE_Schematic'))</a></td>
+<td class="column2">5</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3B3IN3AJZ1IDNNF3BW33UNIWZCZRIVJVPDS0LRON0UXRMMAFG5RG">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">78</td>
+</tr>
+</table><br><a name="ID4KB4XLCQN3KYKZUSCZT5OA0OFNQJTSRGI25XQTDL2JNMAEJYSMGC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4709.139mil|Location2.X=4720.389mil|Location1.Y=2736.934mil|Location2.Y=2748.184mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4709.139mil|Location2.X=4720.389mil|Location1.Y=2736.934mil|Location2.Y=2748.184mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-3(4694.095mil,2748.071mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4709.139mil|Location2.X=4720.389mil|Location1.Y=2756.619mil|Location2.Y=2767.869mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4709.139mil|Location2.X=4720.389mil|Location1.Y=2756.619mil|Location2.Y=2767.869mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-2(4694.095mil,2767.756mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4709.139mil|Location2.X=4720.389mil|Location1.Y=2781.816mil|Location2.Y=2793.066mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4709.139mil|Location2.X=4720.389mil|Location1.Y=2781.816mil|Location2.Y=2793.066mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-1(4694.095mil,2787.441mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4731.186mil|Location2.X=4742.436mil|Location1.Y=2789.69mil|Location2.Y=2800.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4731.186mil|Location2.X=4742.436mil|Location1.Y=2789.69mil|Location2.Y=2800.94mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-15(4742.323mil,2815.984mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4750.871mil|Location2.X=4762.121mil|Location1.Y=2789.69mil|Location2.Y=2800.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4750.871mil|Location2.X=4762.121mil|Location1.Y=2789.69mil|Location2.Y=2800.94mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-14(4762.008mil,2815.984mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4770.556mil|Location2.X=4781.806mil|Location1.Y=2789.69mil|Location2.Y=2800.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4770.556mil|Location2.X=4781.806mil|Location1.Y=2789.69mil|Location2.Y=2800.94mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-13(4781.693mil,2815.984mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4770.556mil|Location2.X=4781.806mil|Location1.Y=2714.887mil|Location2.Y=2726.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4770.556mil|Location2.X=4781.806mil|Location1.Y=2714.887mil|Location2.Y=2726.137mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-8(4781.693mil,2699.843mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4750.871mil|Location2.X=4762.121mil|Location1.Y=2714.887mil|Location2.Y=2726.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4750.871mil|Location2.X=4762.121mil|Location1.Y=2714.887mil|Location2.Y=2726.137mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-7(4762.008mil,2699.843mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4731.186mil|Location2.X=4742.436mil|Location1.Y=2714.887mil|Location2.Y=2726.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4731.186mil|Location2.X=4742.436mil|Location1.Y=2714.887mil|Location2.Y=2726.137mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-6(4742.323mil,2699.843mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.942mil|Location2.X=4795.192mil|Location1.Y=2776.304mil|Location2.Y=2787.554mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.942mil|Location2.X=4795.192mil|Location1.Y=2776.304mil|Location2.Y=2787.554mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-12(4810.236mil,2787.441mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.942mil|Location2.X=4795.192mil|Location1.Y=2756.619mil|Location2.Y=2767.869mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.942mil|Location2.X=4795.192mil|Location1.Y=2756.619mil|Location2.Y=2767.869mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-11(4810.236mil,2767.756mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.942mil|Location2.X=4795.192mil|Location1.Y=2736.934mil|Location2.Y=2748.184mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.942mil|Location2.X=4795.192mil|Location1.Y=2736.934mil|Location2.Y=2748.184mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-10(4810.236mil,2748.071mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4713.076mil|Location2.X=4724.326mil|Location1.Y=2789.69mil|Location2.Y=2800.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4713.076mil|Location2.X=4724.326mil|Location1.Y=2789.69mil|Location2.Y=2800.94mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-16(4722.638mil,2815.984mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.942mil|Location2.X=4795.192mil|Location1.Y=2718.824mil|Location2.Y=2730.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.942mil|Location2.X=4795.192mil|Location1.Y=2718.824mil|Location2.Y=2730.074mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-9(4810.236mil,2728.386mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4713.076mil|Location2.X=4724.326mil|Location1.Y=2714.887mil|Location2.Y=2726.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4713.076mil|Location2.X=4724.326mil|Location1.Y=2714.887mil|Location2.Y=2726.137mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-5(4722.638mil,2699.843mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4677.249mil|Location2.X=4688.499mil|Location1.Y=2771.974mil|Location2.Y=2783.224mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4677.249mil|Location2.X=4688.499mil|Location1.Y=2771.974mil|Location2.Y=2783.224mil|Absolute=True">Clearance Constraint: (8.661mil &lt; 10mil) Between Pad U1-2(4694.095mil,2767.756mil) on Top Layer And Pad U1-1(4694.095mil,2787.441mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4688.47mil|Location2.X=4699.72mil|Location1.Y=2771.718mil|Location2.Y=2782.968mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4688.47mil|Location2.X=4699.72mil|Location1.Y=2771.718mil|Location2.Y=2782.968mil|Absolute=True">Clearance Constraint: (9.173mil &lt; 10mil) Between Track (4694.095mil,2748.071mil)(4694.095mil,2767.756mil) on Top Layer And Pad U1-1(4694.095mil,2787.441mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4676.744mil|Location2.X=4684.41mil|Location1.Y=2781.311mil|Location2.Y=2788.977mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4676.744mil|Location2.X=4684.41mil|Location1.Y=2781.311mil|Location2.Y=2788.977mil|Absolute=True">Clearance Constraint: (Collision &lt; 10mil) Between Track (4646.851mil,2815mil)(4694.095mil,2767.756mil) on Top Layer And Pad U1-1(4694.095mil,2787.441mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4671.738mil|Location2.X=4682.988mil|Location1.Y=2732.604mil|Location2.Y=2743.854mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4671.738mil|Location2.X=4682.988mil|Location1.Y=2732.604mil|Location2.Y=2743.854mil|Absolute=True">Clearance Constraint: (8.661mil &lt; 10mil) Between Pad U1-4(4694.095mil,2728.386mil) on Top Layer And Pad U1-3(4694.095mil,2748.071mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4688.47mil|Location2.X=4699.72mil|Location1.Y=2732.859mil|Location2.Y=2744.109mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4688.47mil|Location2.X=4699.72mil|Location1.Y=2732.859mil|Location2.Y=2744.109mil|Absolute=True">Clearance Constraint: (9.173mil &lt; 10mil) Between Track (4694.095mil,2748.071mil)(4694.095mil,2767.756mil) on Top Layer And Pad U1-4(4694.095mil,2728.386mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4708.352mil|Location2.X=4719.602mil|Location1.Y=2714.1mil|Location2.Y=2725.35mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4708.352mil|Location2.X=4719.602mil|Location1.Y=2714.1mil|Location2.Y=2725.35mil|Absolute=True">Clearance Constraint: (8.908mil &lt; 10mil) Between Pad U1-5(4722.638mil,2699.843mil) on Top Layer And Pad U1-4(4694.095mil,2728.386mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4726.856mil|Location2.X=4738.106mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4726.856mil|Location2.X=4738.106mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True">Clearance Constraint: (8.661mil &lt; 10mil) Between Pad U1-6(4742.323mil,2699.843mil) on Top Layer And Pad U1-5(4722.638mil,2699.843mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4727.111mil|Location2.X=4738.361mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4727.111mil|Location2.X=4738.361mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True">Clearance Constraint: (9.173mil &lt; 10mil) Between Track (4742.323mil,2632.559mil)(4742.323mil,2699.843mil) on Top Layer And Pad U1-5(4722.638mil,2699.843mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.541mil|Location2.X=4757.791mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.541mil|Location2.X=4757.791mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True">Clearance Constraint: (8.661mil &lt; 10mil) Between Pad U1-7(4762.008mil,2699.843mil) on Top Layer And Pad U1-6(4742.323mil,2699.843mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.797mil|Location2.X=4758.047mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.797mil|Location2.X=4758.047mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True">Clearance Constraint: (9.173mil &lt; 10mil) Between Track (4762.008mil,2612.559mil)(4762.008mil,2699.843mil) on Top Layer And Pad U1-6(4742.323mil,2699.843mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.226mil|Location2.X=4777.476mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.226mil|Location2.X=4777.476mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True">Clearance Constraint: (8.661mil &lt; 10mil) Between Pad U1-8(4781.693mil,2699.843mil) on Top Layer And Pad U1-7(4762.008mil,2699.843mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.285mil|Location2.X=4757.535mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.285mil|Location2.X=4757.535mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True">Clearance Constraint: (9.173mil &lt; 10mil) Between Track (4742.323mil,2632.559mil)(4742.323mil,2699.843mil) on Top Layer And Pad U1-7(4762.008mil,2699.843mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.481mil|Location2.X=4777.731mil|Location1.Y=2694.218mil|Location2.Y=2705.468mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.481mil|Location2.X=4777.731mil|Location1.Y=2694.218mil|Location2.Y=2705.468mil|Absolute=True">Clearance Constraint: (9.173mil &lt; 10mil) Between Track (4781.693mil,2699.843mil)(4827.008mil,2654.528mil) on Top Layer And Pad U1-7(4762.008mil,2699.843mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4765.97mil|Location2.X=4777.22mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4765.97mil|Location2.X=4777.22mil|Location1.Y=2677.485mil|Location2.Y=2688.735mil|Absolute=True">Clearance Constraint: (9.173mil &lt; 10mil) Between Track (4762.008mil,2612.559mil)(4762.008mil,2699.843mil) on Top Layer And Pad U1-8(4781.693mil,2699.843mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4784.73mil|Location2.X=4795.98mil|Location1.Y=2714.1mil|Location2.Y=2725.35mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4784.73mil|Location2.X=4795.98mil|Location1.Y=2714.1mil|Location2.Y=2725.35mil|Absolute=True">Clearance Constraint: (8.908mil &lt; 10mil) Between Pad U1-9(4810.236mil,2728.386mil) on Top Layer And Pad U1-8(4781.693mil,2699.843mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4787.879mil|Location2.X=4799.129mil|Location1.Y=2732.604mil|Location2.Y=2743.854mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4787.879mil|Location2.X=4799.129mil|Location1.Y=2732.604mil|Location2.Y=2743.854mil|Absolute=True">Clearance Constraint: (8.661mil &lt; 10mil) Between Pad U1-10(4810.236mil,2748.071mil) on Top Layer And Pad U1-9(4810.236mil,2728.386mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4804.611mil|Location2.X=4815.861mil|Location1.Y=2732.348mil|Location2.Y=2743.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4804.611mil|Location2.X=4815.861mil|Location1.Y=2732.348mil|Location2.Y=2743.598mil|Absolute=True">Clearance Constraint: (9.173mil &lt; 10mil) Between Track (4810.236mil,2728.386mil)(4869.843mil,2728.386mil) on Top Layer And Pad U1-10(4810.236mil,2748.071mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4787.879mil|Location2.X=4799.129mil|Location1.Y=2752.289mil|Location2.Y=2763.539mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4787.879mil|Location2.X=4799.129mil|Location1.Y=2752.289mil|Location2.Y=2763.539mil|Absolute=True">Clearance Constraint: (8.661mil &lt; 10mil) Between Pad U1-11(4810.236mil,2767.756mil) on Top Layer And Pad U1-10(4810.236mil,2748.071mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.226mil|Location2.X=4777.476mil|Location1.Y=2793.627mil|Location2.Y=2804.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.226mil|Location2.X=4777.476mil|Location1.Y=2793.627mil|Location2.Y=2804.877mil|Absolute=True">Clearance Constraint: (8.661mil &lt; 10mil) Between Pad U1-14(4762.008mil,2815.984mil) on Top Layer And Pad U1-13(4781.693mil,2815.984mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.285mil|Location2.X=4757.535mil|Location1.Y=2810.359mil|Location2.Y=2821.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.285mil|Location2.X=4757.535mil|Location1.Y=2810.359mil|Location2.Y=2821.609mil|Absolute=True">Clearance Constraint: (9.173mil &lt; 10mil) Between Track (4741.496mil,2815.984mil)(4742.323mil,2815.984mil) on Top Layer And Pad U1-14(4762.008mil,2815.984mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.541mil|Location2.X=4757.791mil|Location1.Y=2793.627mil|Location2.Y=2804.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.541mil|Location2.X=4757.791mil|Location1.Y=2793.627mil|Location2.Y=2804.877mil|Absolute=True">Clearance Constraint: (8.661mil &lt; 10mil) Between Pad U1-15(4742.323mil,2815.984mil) on Top Layer And Pad U1-14(4762.008mil,2815.984mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.481mil|Location2.X=4777.731mil|Location1.Y=2810.359mil|Location2.Y=2821.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.481mil|Location2.X=4777.731mil|Location1.Y=2810.359mil|Location2.Y=2821.609mil|Absolute=True">Clearance Constraint: (9.173mil &lt; 10mil) Between Track (4781.693mil,2815.984mil)(4882.638mil,2815.984mil) on Top Layer And Pad U1-14(4762.008mil,2815.984mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.541mil|Location2.X=4757.791mil|Location1.Y=2626.934mil|Location2.Y=2638.184mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.541mil|Location2.X=4757.791mil|Location1.Y=2626.934mil|Location2.Y=2638.184mil|Absolute=True">Clearance Constraint: (9.685mil &lt; 10mil) Between Track (4762.008mil,2612.559mil)(4762.008mil,2699.843mil) on Top Layer And Track (4742.323mil,2632.559mil)(4742.323mil,2699.843mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.541mil|Location2.X=4757.791mil|Location1.Y=2626.934mil|Location2.Y=2638.184mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.541mil|Location2.X=4757.791mil|Location1.Y=2626.934mil|Location2.Y=2638.184mil|Absolute=True">Clearance Constraint: (9.685mil &lt; 10mil) Between Track (4762.008mil,2612.559mil)(4762.008mil,2699.843mil) on Top Layer And Track (4704.764mil,2595mil)(4742.323mil,2632.559mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.226mil|Location2.X=4777.476mil|Location1.Y=2694.218mil|Location2.Y=2705.468mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.226mil|Location2.X=4777.476mil|Location1.Y=2694.218mil|Location2.Y=2705.468mil|Absolute=True">Clearance Constraint: (9.685mil &lt; 10mil) Between Track (4781.693mil,2699.843mil)(4827.008mil,2654.528mil) on Top Layer And Track (4762.008mil,2612.559mil)(4762.008mil,2699.843mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4683.342mil|Location2.X=4694.592mil|Location1.Y=2777.515mil|Location2.Y=2788.765mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4683.342mil|Location2.X=4694.592mil|Location1.Y=2777.515mil|Location2.Y=2788.765mil|Absolute=True">Clearance Constraint: (4.504mil &lt; 10mil) Between Track (4646.851mil,2815mil)(4694.095mil,2767.756mil) on Top Layer And Track (4694.095mil,2788.268mil)(4721.811mil,2815.984mil) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDHLJ0OWX0OCV5P1DOTGOCWJF4UFWSQFJ0XYG0XJOV5DJFNZ4GY0MG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Short-Circuit Constraint (Allowed=No) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4674.079mil|Location2.X=4690.415mil|Location1.Y=2778.074mil|Location2.Y=2794.41mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4674.079mil|Location2.X=4690.415mil|Location1.Y=2778.074mil|Location2.Y=2794.41mil|Absolute=True">Short-Circuit Constraint: Between Track (4646.851mil,2815mil)(4694.095mil,2767.756mil) on Top Layer And Pad U1-1(4694.095mil,2787.441mil) on Top Layer Location : [X = 4682.247mil][Y = 2786.242mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDX2HYNPLRYLWGK44UCRZTATA4VGFBH4J4VA2ZVXOA2IYPG002WAGM"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4673.363mil|Location2.X=4789.63mil|Location1.Y=2718.874mil|Location2.Y=2795.378mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4673.363mil|Location2.X=4789.63mil|Location1.Y=2718.874mil|Location2.Y=2795.378mil|Absolute=True">Un-Routed Net Constraint: Net NetC10_2 Between Pad U1-4(4694.095mil,2728.386mil) on Top Layer And Pad U1-4(4752.166mil,2757.913mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4567.339mil|Location2.X=4714.827mil|Location1.Y=2674.583mil|Location2.Y=2737.898mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4567.339mil|Location2.X=4714.827mil|Location1.Y=2674.583mil|Location2.Y=2737.898mil|Absolute=True">Un-Routed Net Constraint: Net NetC10_2 Between Pad C10-2(4596.929mil,2696.299mil) on Top Layer And Pad U1-4(4694.095mil,2728.386mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4442.575mil|Location2.X=4501.756mil|Location1.Y=2479.189mil|Location2.Y=2716.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4442.575mil|Location2.X=4501.756mil|Location1.Y=2479.189mil|Location2.Y=2716.913mil|Absolute=True">Un-Routed Net Constraint: Net Vout Between Pad C6-1(4472.166mil,2695.197mil) on Top Layer And Pad C7-2(4485.158mil,2495mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4789.504mil|Location2.X=4830.969mil|Location1.Y=2758.244mil|Location2.Y=2796.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4789.504mil|Location2.X=4830.969mil|Location1.Y=2758.244mil|Location2.Y=2796.953mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-11(4810.236mil,2767.756mil) on Top Layer And Pad U1-12(4810.236mil,2787.441mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4772.181mil|Location2.X=4830.969mil|Location1.Y=2777.929mil|Location2.Y=2836.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4772.181mil|Location2.X=4830.969mil|Location1.Y=2777.929mil|Location2.Y=2836.717mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-13(4781.693mil,2815.984mil) on Top Layer And Pad U1-12(4810.236mil,2787.441mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4504.544mil|Location2.X=4540.811mil|Location1.Y=2479.189mil|Location2.Y=2582.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4504.544mil|Location2.X=4540.811mil|Location1.Y=2479.189mil|Location2.Y=2582.622mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C7-1(4519.173mil,2495mil) on Top Layer And Pad C5-2(4525mil,2567.992mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4732.811mil|Location2.X=4830.969mil|Location1.Y=2679.11mil|Location2.Y=2777.268mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4732.811mil|Location2.X=4830.969mil|Location1.Y=2679.11mil|Location2.Y=2777.268mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-6(4742.323mil,2699.843mil) on Top Layer And Pad U1-11(4810.236mil,2767.756mil) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDNBTFVTJINHHQBPV2KHE2U1UWFPMYPO4CPK05HSGVFJCXDFBPBNTP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5261.541mil|Location2.X=5272.791mil|Location1.Y=2845.375mil|Location2.Y=2856.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5261.541mil|Location2.X=5272.791mil|Location1.Y=2845.375mil|Location2.Y=2856.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (9.717mil &lt; 10mil) Between Pad D1-2(5303.386mil,2882.559mil) on Top Layer And Pad D1-1(5230.945mil,2882.559mil) on Top Layer [Top Solder] Mask Sliver [9.717mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4677.249mil|Location2.X=4688.499mil|Location1.Y=2771.974mil|Location2.Y=2783.224mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4677.249mil|Location2.X=4688.499mil|Location1.Y=2771.974mil|Location2.Y=2783.224mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-2(4694.095mil,2767.756mil) on Top Layer And Pad U1-1(4694.095mil,2787.441mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4706.959mil|Location2.X=4718.209mil|Location1.Y=2789.084mil|Location2.Y=2800.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4706.959mil|Location2.X=4718.209mil|Location1.Y=2789.084mil|Location2.Y=2800.334mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.535mil &lt; 10mil) Between Pad U1-16(4722.638mil,2815.984mil) on Top Layer And Pad U1-1(4694.095mil,2787.441mil) on Top Layer [Top Solder] Mask Sliver [1.535mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4667.738mil|Location2.X=4678.988mil|Location1.Y=2752.289mil|Location2.Y=2763.539mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4667.738mil|Location2.X=4678.988mil|Location1.Y=2752.289mil|Location2.Y=2763.539mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-3(4694.095mil,2748.071mil) on Top Layer And Pad U1-2(4694.095mil,2767.756mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4667.738mil|Location2.X=4678.988mil|Location1.Y=2732.604mil|Location2.Y=2743.854mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4667.738mil|Location2.X=4678.988mil|Location1.Y=2732.604mil|Location2.Y=2743.854mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-4(4694.095mil,2728.386mil) on Top Layer And Pad U1-3(4694.095mil,2748.071mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4726.856mil|Location2.X=4738.106mil|Location1.Y=2673.485mil|Location2.Y=2684.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4726.856mil|Location2.X=4738.106mil|Location1.Y=2673.485mil|Location2.Y=2684.735mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-6(4742.323mil,2699.843mil) on Top Layer And Pad U1-5(4722.638mil,2699.843mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.541mil|Location2.X=4757.791mil|Location1.Y=2673.485mil|Location2.Y=2684.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.541mil|Location2.X=4757.791mil|Location1.Y=2673.485mil|Location2.Y=2684.735mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-7(4762.008mil,2699.843mil) on Top Layer And Pad U1-6(4742.323mil,2699.843mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.226mil|Location2.X=4777.476mil|Location1.Y=2673.485mil|Location2.Y=2684.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.226mil|Location2.X=4777.476mil|Location1.Y=2673.485mil|Location2.Y=2684.735mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-8(4781.693mil,2699.843mil) on Top Layer And Pad U1-7(4762.008mil,2699.843mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.879mil|Location2.X=4795.129mil|Location1.Y=2732.604mil|Location2.Y=2743.854mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.879mil|Location2.X=4795.129mil|Location1.Y=2732.604mil|Location2.Y=2743.854mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-10(4810.236mil,2748.071mil) on Top Layer And Pad U1-9(4810.236mil,2728.386mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.879mil|Location2.X=4795.129mil|Location1.Y=2752.289mil|Location2.Y=2763.539mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.879mil|Location2.X=4795.129mil|Location1.Y=2752.289mil|Location2.Y=2763.539mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-11(4810.236mil,2767.756mil) on Top Layer And Pad U1-10(4810.236mil,2748.071mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.879mil|Location2.X=4795.129mil|Location1.Y=2771.974mil|Location2.Y=2783.224mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4783.879mil|Location2.X=4795.129mil|Location1.Y=2771.974mil|Location2.Y=2783.224mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-12(4810.236mil,2787.441mil) on Top Layer And Pad U1-11(4810.236mil,2767.756mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.226mil|Location2.X=4777.476mil|Location1.Y=2789.627mil|Location2.Y=2800.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4766.226mil|Location2.X=4777.476mil|Location1.Y=2789.627mil|Location2.Y=2800.877mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-14(4762.008mil,2815.984mil) on Top Layer And Pad U1-13(4781.693mil,2815.984mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.541mil|Location2.X=4757.791mil|Location1.Y=2789.627mil|Location2.Y=2800.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4746.541mil|Location2.X=4757.791mil|Location1.Y=2789.627mil|Location2.Y=2800.877mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-15(4742.323mil,2815.984mil) on Top Layer And Pad U1-14(4762.008mil,2815.984mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4726.856mil|Location2.X=4738.106mil|Location1.Y=2789.627mil|Location2.Y=2800.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4726.856mil|Location2.X=4738.106mil|Location1.Y=2789.627mil|Location2.Y=2800.877mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-16(4722.638mil,2815.984mil) on Top Layer And Pad U1-15(4742.323mil,2815.984mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4496.541mil|Location2.X=4507.791mil|Location1.Y=2473.564mil|Location2.Y=2484.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4496.541mil|Location2.X=4507.791mil|Location1.Y=2473.564mil|Location2.Y=2484.814mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (4.756mil &lt; 10mil) Between Pad C7-2(4485.158mil,2495mil) on Top Layer And Pad C7-1(4519.173mil,2495mil) on Top Layer [Top Solder] Mask Sliver [4.756mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.564mil|Location2.X=4514.814mil|Location1.Y=2579.375mil|Location2.Y=2590.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.564mil|Location2.X=4514.814mil|Location1.Y=2579.375mil|Location2.Y=2590.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (4.756mil &lt; 10mil) Between Pad C5-2(4525mil,2567.992mil) on Top Layer And Pad C5-1(4525mil,2602.008mil) on Top Layer [Top Solder] Mask Sliver [4.756mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4601.541mil|Location2.X=4612.791mil|Location1.Y=2478.564mil|Location2.Y=2489.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4601.541mil|Location2.X=4612.791mil|Location1.Y=2478.564mil|Location2.Y=2489.814mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (4.756mil &lt; 10mil) Between Pad C8-2(4590.158mil,2500mil) on Top Layer And Pad C8-1(4624.173mil,2500mil) on Top Layer [Top Solder] Mask Sliver [4.756mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDKHDI331VD2HPLSEQTGCDU2VRWIZ3UHRPTXUSGCLFNUGNFSREUYAE"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5190.645mil|Location2.X=5201.895mil|Location1.Y=2938.036mil|Location2.Y=2949.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5190.645mil|Location2.X=5201.895mil|Location1.Y=2938.036mil|Location2.Y=2949.286mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.508mil &lt; 10mil) Between Track (5189.016mil,2889.291mil)(5189.016mil,3100.709mil) on Top Overlay And Pad D1-3(5267.166mil,3039.331mil) on Top Layer [Top Overlay] to [Top Solder] clearance [9.508mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5332.436mil|Location2.X=5343.686mil|Location1.Y=2938.036mil|Location2.Y=2949.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5332.436mil|Location2.X=5343.686mil|Location1.Y=2938.036mil|Location2.Y=2949.286mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.508mil &lt; 10mil) Between Track (5345.315mil,2889.291mil)(5345.315mil,3100.709mil) on Top Overlay And Pad D1-3(5267.166mil,3039.331mil) on Top Layer [Top Overlay] to [Top Solder] clearance [9.508mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4728.057mil|Location2.X=4735.723mil|Location1.Y=2736.56mil|Location2.Y=2744.227mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4728.057mil|Location2.X=4735.723mil|Location1.Y=2736.56mil|Location2.Y=2744.227mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Track (4731.89mil,2740.394mil)(4769.685mil,2778.189mil) on Top Overlay And Pad U1-4(4752.166mil,2757.913mil) on Top Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4768.608mil|Location2.X=4776.274mil|Location1.Y=2774.356mil|Location2.Y=2782.022mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4768.608mil|Location2.X=4776.274mil|Location1.Y=2774.356mil|Location2.Y=2782.022mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Track (4769.685mil,2778.189mil)(4772.441mil,2778.189mil) on Top Overlay And Pad U1-4(4752.166mil,2757.913mil) on Top Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4768.608mil|Location2.X=4776.274mil|Location1.Y=2774.356mil|Location2.Y=2782.022mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4768.608mil|Location2.X=4776.274mil|Location1.Y=2774.356mil|Location2.Y=2782.022mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Track (4772.441mil,2737.638mil)(4772.441mil,2778.189mil) on Top Overlay And Pad U1-4(4752.166mil,2757.913mil) on Top Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4728.057mil|Location2.X=4735.723mil|Location1.Y=2733.805mil|Location2.Y=2741.471mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4728.057mil|Location2.X=4735.723mil|Location1.Y=2733.805mil|Location2.Y=2741.471mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Track (4731.89mil,2737.638mil)(4772.441mil,2737.638mil) on Top Overlay And Pad U1-4(4752.166mil,2757.913mil) on Top Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4728.057mil|Location2.X=4735.723mil|Location1.Y=2736.56mil|Location2.Y=2744.227mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4728.057mil|Location2.X=4735.723mil|Location1.Y=2736.56mil|Location2.Y=2744.227mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Track (4731.89mil,2737.638mil)(4731.89mil,2740.394mil) on Top Overlay And Pad U1-4(4752.166mil,2757.913mil) on Top Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDZZUK0GX1CFZIF1ARX5AU1AQBXDIFXDUELQKGCCEZ5FDNFJL0Q3QD"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Room TPS5530RTE_Schematic (Bounding Region = (2797.166mil, 2410mil, 6212.166mil, 3010mil) (InComponentClass('TPS5530RTE_Schematic'))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2797.166mil|Location2.X=6212.166mil|Location1.Y=2410mil|Location2.Y=3178.937mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2797.166mil|Location2.X=6212.166mil|Location1.Y=2410mil|Location2.Y=3178.937mil|Absolute=True">Room Definition: Between SMT Small Component L-2.2uH (4897.166mil,3020mil) on Top Layer And Room TPS5530RTE_Schematic (Bounding Region = (2797.166mil, 2410mil, 6212.166mil, 3010mil) (InComponentClass('TPS5530RTE_Schematic')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2797.166mil|Location2.X=6212.166mil|Location1.Y=2410mil|Location2.Y=3145.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2797.166mil|Location2.X=6212.166mil|Location1.Y=2410mil|Location2.Y=3145.984mil|Absolute=True">Room Definition: Between SMT Small Component D1-D1 (5272.166mil,2930mil) on Top Layer And Room TPS5530RTE_Schematic (Bounding Region = (2797.166mil, 2410mil, 6212.166mil, 3010mil) (InComponentClass('TPS5530RTE_Schematic')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2797.166mil|Location2.X=6212.166mil|Location1.Y=2410mil|Location2.Y=3313.346mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2797.166mil|Location2.X=6212.166mil|Location1.Y=2410mil|Location2.Y=3313.346mil|Absolute=True">Room Definition: Between SMT Small Component C3-10uF_New (5872.166mil,3135mil) on Top Layer And Room TPS5530RTE_Schematic (Bounding Region = (2797.166mil, 2410mil, 6212.166mil, 3010mil) (InComponentClass('TPS5530RTE_Schematic')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2797.166mil|Location2.X=6291.575mil|Location1.Y=2410mil|Location2.Y=3281.26mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2797.166mil|Location2.X=6291.575mil|Location1.Y=2410mil|Location2.Y=3281.26mil|Absolute=True">Room Definition: Between SMT Small Component C2-10uF_New (6192.166mil,3102.913mil) on Top Layer And Room TPS5530RTE_Schematic (Bounding Region = (2797.166mil, 2410mil, 6212.166mil, 3010mil) (InComponentClass('TPS5530RTE_Schematic')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2797.166mil|Location2.X=6556.575mil|Location1.Y=2410mil|Location2.Y=3266.26mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS5530RTE\TPS5530RTE_PCB_Project\PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2797.166mil|Location2.X=6556.575mil|Location1.Y=2410mil|Location2.Y=3266.26mil|Absolute=True">Room Definition: Between SMT Small Component C1-10uF_New (6457.166mil,3087.913mil) on Top Layer And Room TPS5530RTE_Schematic (Bounding Region = (2797.166mil, 2410mil, 6212.166mil, 3010mil) (InComponentClass('TPS5530RTE_Schematic')) </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
