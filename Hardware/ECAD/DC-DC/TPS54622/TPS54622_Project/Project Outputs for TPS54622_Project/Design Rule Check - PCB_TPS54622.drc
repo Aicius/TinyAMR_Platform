@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\ai\Desktop\Project233\Hardware\ECAD\DC-DC\TPS54622\TPS54622_Project\PCB_TPS54622.PcbDoc
-Date     : 11/26/2019
-Time     : 5:14:55 PM
+Date     : 11/27/2019
+Time     : 8:03:48 PM
 
 Processing Rule : Clearance Constraint (Gap=6mil) (All),(All)
 Rule Violations :0
@@ -14,14 +14,8 @@ Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
 Rule Violations :4
 
 Processing Rule : Un-Routed Net Constraint ( (All) )
-   Violation between Un-Routed Net Constraint: Net Vout Between Pad C4-1(2150mil,2642.953mil) on Top Layer And Pad C6-1(2455mil,2667.953mil) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net Vout Between Pad C6-1(2455mil,2667.953mil) on Top Layer And Pad C5-1(2755mil,2722.953mil) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net Vout Between Pad C5-1(2755mil,2722.953mil) on Top Layer And Pad L1-2(3070.236mil,2204.528mil) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net NetR1_1 Between Pad R1-1(2414.724mil,2109.764mil) on Top Layer And Pad U1-10(2826.26mil,2130.354mil) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad C4-2(2150mil,2887.047mil) on Top Layer And Pad C6-2(2455mil,2912.047mil) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad C6-2(2455mil,2912.047mil) on Top Layer And Pad C5-2(2755mil,2967.047mil) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad C2-1(2417.087mil,2320mil) on Top Layer And Pad C6-2(2455mil,2912.047mil) on Top Layer 
-Rule Violations :7
+   Violation between Un-Routed Net Constraint: Net GND Between Track (2722.661mil,2515.659mil)(2729.105mil,2522.102mil) on Top Layer And Pad C2-1(2917.913mil,2480mil) on Top Layer 
+Rule Violations :1
 
 Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
 Rule Violations :0
@@ -68,40 +62,29 @@ Processing Rule : Minimum Solder Mask Sliver (Gap=10mil) (All),(All)
 Rule Violations :26
 
 Processing Rule : Silk To Solder Mask (Clearance=10mil) (IsPad),(All)
-Rule Violations :0
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 10mil) Between Text "R3" (2785mil,2500mil) on Top Overlay And Pad C2-2(2782.087mil,2480mil) on Top Layer [Top Overlay] to [Top Solder] clearance [0mil]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 10mil) Between Text "R5" (2860mil,2615mil) on Top Overlay And Pad C2-1(2917.913mil,2480mil) on Top Layer [Top Overlay] to [Top Solder] clearance [0mil]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 10mil) Between Text "C4" (3200mil,2840mil) on Top Overlay And Pad C6-2(3302.047mil,2765mil) on Top Layer [Top Overlay] to [Top Solder] clearance [0mil]
+Rule Violations :3
 
 Processing Rule : Silk to Silk (Clearance=10mil) (All),(All)
-   Violation between Silk To Silk Clearance Constraint: (Collision < 10mil) Between Text "C2" (2162.087mil,2705mil) on Top Overlay And Track (2238.583mil,2617.362mil)(2238.583mil,2912.638mil) on Top Overlay Silk Text to Silk Clearance [0mil]
-   Violation between Silk To Silk Clearance Constraint: (0.032mil < 10mil) Between Text "R5" (3015mil,2605mil) on Top Overlay And Text "L1" (3060mil,2495mil) on Top Overlay Silk Text to Silk Clearance [0.032mil]
-Rule Violations :2
+   Violation between Silk To Silk Clearance Constraint: (Collision < 10mil) Between Text "R5" (2860mil,2615mil) on Top Overlay And Track (2903.15mil,2568.583mil)(2938.583mil,2533.543mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 10mil) Between Text "R3" (2785mil,2500mil) on Top Overlay And Track (2761.417mil,2568.583mil)(2903.15mil,2568.583mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 10mil) Between Text "R5" (2860mil,2615mil) on Top Overlay And Track (2761.417mil,2568.583mil)(2903.15mil,2568.583mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 10mil) Between Text "R3" (2785mil,2500mil) on Top Overlay And Track (2761.417mil,2523.701mil)(2761.417mil,2568.583mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (6.083mil < 10mil) Between Text "C4" (3200mil,2840mil) on Top Overlay And Track (3032.362mil,2853.583mil)(3327.638mil,2853.583mil) on Top Overlay Silk Text to Silk Clearance [6.083mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 10mil) Between Text "R5" (2860mil,2615mil) on Top Overlay And Text "C2" (2882.087mil,2675mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (5.295mil < 10mil) Between Text "C10" (2555mil,1410mil) on Top Overlay And Text "C3" (2619.764mil,1395.472mil) on Top Overlay Silk Text to Silk Clearance [5.295mil]
+Rule Violations :7
 
 Processing Rule : Net Antennae (Tolerance=0mil) (All)
-Rule Violations :0
-
-Processing Rule : Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic'))
-   Violation between Room Definition: Between SMT Small Component R3-10kohm (2750mil,2000mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component C1-0.1uF (2950.236mil,2164.724mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component C2-27uF (2485mil,2320mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component C3-4.7uF (2590.236mil,2139.528mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component C4-10uF_New (2150mil,2765mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component C5-10uF_New (2755mil,2845mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component C6-10uF_New (2455mil,2790mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component C7-2.2nF (2935mil,1995mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component C8-12pF (2830mil,1865mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component C9-47uF (2480mil,1865mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component C10-6.2nF (2715.472mil,1870.748mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component L1-3.3uH (3070mil,2170mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component R1-105Kohms (2455mil,2110mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component R2-191kohms (2595.59mil,1865mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component R4-37.4kohms (2375mil,2005mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component R5-28.7Kohm (2710.472mil,2335.236mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between SMT Small Component R6-10kohm (2570mil,2005mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-   Violation between Room Definition: Between Component U1-TPS54622RHLR (2759.921mil,2150.039mil) on Top Layer And Room TPS54622_Schematic (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('TPS54622_Schematic')) 
-Rule Violations :18
+   Violation between Net Antennae: Track (2722.661mil,2515.659mil)(2729.105mil,2522.102mil) on Top Layer 
+   Violation between Net Antennae: Track (2722.661mil,2515.659mil)(2729.105mil,2522.102mil) on Top Layer 
+Rule Violations :2
 
 Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
 Rule Violations :0
 
 
-Violations Detected : 57
-Time Elapsed        : 00:00:01
+Violations Detected : 43
+Time Elapsed        : 00:00:00
